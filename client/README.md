@@ -6,3 +6,4 @@
 2015-03-18
 - Model - phalcon project beállítás a ws-ekhez
 - Directive - egy példa (loader)
+- Kipróbálni a broadcastot: http://plnkr.co/edit/cKVsPcfs1A1Wwlud2jtO?p=preview
