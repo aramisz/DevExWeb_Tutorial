@@ -1,0 +1,24 @@
+<div ng-controller="ProfileController as profileCtrl">
+Profile
+    <div>{{userCtrl.comeFromUser}}</div>
+
+    <div ng-init="mainCtrl.username=profileCtrl.user.username"></div>
+
+    <div>
+        <form name="userForm">
+            <div>
+                <label>Username</label>
+                <input ng-init="mainCtrl.username=profileCtrl.user.username" type="text" ng-model="profileCtrl.user.username" required>
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" ng-model="profileCtrl.user.email" required>
+            </div>
+            <div>
+                <button ng-disabled="!userForm.$valid" ng-click="profileCtrl.saveForm()">
+                    Save user
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
