@@ -1,1 +1,1 @@
-# angular_devex
+# AngularJS + Phalcon PHP Framework tutorial
