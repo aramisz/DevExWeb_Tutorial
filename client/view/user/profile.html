@@ -2,13 +2,11 @@
 Profile
     <div>{{userCtrl.comeFromUser}}</div>
 
-    <div ng-init="mainCtrl.username=profileCtrl.user.username"></div>
-
     <div>
         <form name="userForm">
             <div>
                 <label>Username</label>
-                <input ng-init="mainCtrl.username=profileCtrl.user.username" type="text" ng-model="profileCtrl.user.username" required>
+                <input type="text" ng-model="profileCtrl.user.username" required>
             </div>
             <div>
                 <label>Email</label>

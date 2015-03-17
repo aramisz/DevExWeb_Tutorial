@@ -6,18 +6,24 @@
 
     app.controller('MainController', MainController);
 
-    MainController.$inject = ['$scope', 'UserService'];
+    MainController.$inject = ['$rootScope', 'UserService'];
 
-    function MainController($scope, UserService) {
-        var vm = this;
+    function MainController($rootScope, UserService) {
+        var vm = this;  // ViewModel
 
-        vm.username = UserService.getUsername();
+        vm.userData = UserService.getUserData();
 
         init();
         function init() {
             console.log('Init Main');
 
+            // Getting message from ProfileController
+            $rootScope.$on('update_user', function(event, user) {
+               console.log('User', user);
+            });
+
         }
 
     }
 })();
+

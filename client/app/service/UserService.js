@@ -8,10 +8,14 @@ app.service('UserService', function () {
     var data = {
         username: 'DevEx User',
         email: 'devex@helloandroid.com'
-    }
+    };
 
     function init() {
 
+    }
+
+    function getUserData() {
+        return data;
     }
 
     function getUsername() {
@@ -39,7 +43,8 @@ app.service('UserService', function () {
         getUsername: getUsername,
         setUsername: setUsername,
         getEmail: getEmail,
-        setEmail: setEmail
+        setEmail: setEmail,
+        getUserData: getUserData
     }
 
 });

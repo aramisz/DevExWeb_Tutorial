@@ -4,8 +4,8 @@
 'use strict';
 
 var app = angular.module('app', [
-    'appRoute'
-    //'jsonRPC',
+    'appRoute',
+    'jsonRPC'
 ]);
 
 app.config(function ($httpProvider) {

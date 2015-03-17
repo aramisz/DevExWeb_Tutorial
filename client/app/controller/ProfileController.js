@@ -6,9 +6,9 @@
 
     app.controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['$state', '$stateParams', 'UserService'];
+    ProfileController.$inject = ['$rootScope', '$state', '$stateParams', 'UserService'];
 
-    function ProfileController($state, $stateParams, UserService) {
+    function ProfileController($rootScope, $state, $stateParams, UserService) {
         var vm = this;
 
         vm.saveForm = saveForm;
@@ -31,9 +31,11 @@
             UserService.setUsername(vm.user.username);
             UserService.setEmail(vm.user.email);
 
-            console.log(vm.user);
+            $rootScope.$broadcast('update_user', {
+                username: vm.user.username,
+                email: vm.user.email
+            });
 
-            // TODO: refresh mainCtrl
         }
 
     }

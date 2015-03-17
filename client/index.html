@@ -5,8 +5,9 @@
     <title></title>
 </head>
 <body>
+
 <h1>DevExAngularPhalcon</h1>
-<em>{{mainCtrl.username}}</em>
+<em>{{mainCtrl.userData.username}}</em>
 
 <div ng-include="'view/common/menu.html'"></div>
 
@@ -20,8 +21,11 @@
 
 
 <!-- Angular App -->
+<script src="library/jsonrpc/jsonRPC.js"></script>
+
 <script src="app/app.js"></script>
 <script src="app/route.js"></script>
+<script src="app/config.js"></script>
 
 <!-- Controllers -->
 <script src="app/controller/MainController.js"></script>
@@ -30,6 +34,7 @@
 
 <!-- Services -->
 <script src="app/service/UserService.js"></script>
+<script src="app/service/RpcService.js"></script>
 
 
 
