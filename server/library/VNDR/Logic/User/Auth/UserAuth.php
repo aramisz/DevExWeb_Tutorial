@@ -76,6 +76,7 @@ class UserAuth extends ServiceWithoutToken
 //                "message" => "Login failed from server!"
 //            );
 
+            header('HTTP/1.0 403 Forbidden');
             throw new JsonRPCException("Wrong email or password!");
         }
 

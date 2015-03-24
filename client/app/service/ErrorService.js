@@ -35,7 +35,7 @@ app.factory('ErrorInterceptorService', function ($q, $location, $window) {
                  * It should be logout the user
                  */
                 if (response.status == 403) {
-
+                    alert(response.data.error.message + ' (ErrorService)');
                 }
 
                 /**
