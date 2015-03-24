@@ -58,6 +58,7 @@ class UserAuth extends ServiceWithoutToken
             $this->response->setOutcome(true);
             $this->response->setData(
                 array(
+                    "success" => true,
                     "user" => $user_data,
                     "token" => $token
                 )

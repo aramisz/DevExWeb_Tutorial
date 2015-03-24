@@ -5,6 +5,8 @@
 
 app.service('UserService', function () {
 
+    var isAuth = false;
+    var token;
     var data = {
         username: 'DevEx User',
         email: 'devex@helloandroid.com'
@@ -16,6 +18,10 @@ app.service('UserService', function () {
 
     function getUserData() {
         return data;
+    }
+
+    function setUserData(user_data) {
+        data = user_data;
     }
 
     function getUsername() {
@@ -34,17 +40,40 @@ app.service('UserService', function () {
         data.email = email;
     }
 
+    function setToken(user_token) {
+        token = user_token
+        console.log('token', token);
+        window.localStorage.setItem('token')
+    }
+
+    function getToken() {
+        token = window.localStorage.getItem('token');
+        return token;
+    }
+
+    function logout() {
+        isAuth = false;
+        setUser(null);
+        setToken(null);
+        StorageService.clearAll();
+    }
+
 
     /**
      * Public methods
      */
     return {
         init: init,
+        isAuth: isAuth,
         getUsername: getUsername,
         setUsername: setUsername,
         getEmail: getEmail,
         setEmail: setEmail,
-        getUserData: getUserData
+        getUserData: getUserData,
+        setUserData: setUserData,
+        setToken: setToken,
+        getToken: getToken,
+        logout: logout
     }
 
 });

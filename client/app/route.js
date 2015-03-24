@@ -23,6 +23,20 @@ appRoute.config(function ($stateProvider, $urlRouterProvider, $locationProvider)
         .state('user.password', {
             url: '/password',
             templateUrl: 'view/user/password.html'
+        })
+        .state('auth', {
+            url: '/auth',
+            abstract: true,
+            templateUrl: 'view/auth/auth-index.html'
+        })
+        .state('auth.login', {
+            url: '/login',
+            templateUrl: 'view/auth/auth-login.html'
+        })
+        .state('auth.logout', {
+            url: '/logout',
+            templateUrl: 'view/auth/auth-login.html',
+            data: {pageTitle: 'Logout'}
         });
 
     //$locationProvider.html5Mode(true);

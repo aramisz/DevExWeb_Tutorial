@@ -1,6 +1,6 @@
 'use strict';
 
-app.service('RpcService', function (jsonRPCService, AuthService) {
+app.service('RpcService', function (jsonRPCService, UserService) {
 
     return {
         call: function (namespace, method, params, cache) {
@@ -16,9 +16,9 @@ app.service('RpcService', function (jsonRPCService, AuthService) {
                 'auth-token': 'no'
             });
 
-            if (AuthService.getUserAuthenticated) {
+            if (UserService.isAuth) {
                 jsonRPCService.setHeaders({
-                    'auth-token': AuthService.getToken()
+                    'auth-token': UserService.getToken()
                 });
             }
 
