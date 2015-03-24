@@ -33,8 +33,7 @@ class UserAuth extends ServiceWithoutToken
         $user = UserModel::findFirst($where);
 
 
-        if ($user)
-        {
+        if ($user) {
 
             if (!$user->getActive()) {
                 throw new JsonRPCException("You are not activated!");
@@ -64,10 +63,19 @@ class UserAuth extends ServiceWithoutToken
                 )
             );
 
-            return $this->response->toArray();
-        }
-        else
-        {
+            //return $this->response->toArray();
+
+            return array(
+                "success" => true,
+                "user" => $user_data,
+                "token" => $token
+            );
+        } else {
+//            return array(
+//                "success" => false,
+//                "message" => "Login failed from server!"
+//            );
+
             throw new JsonRPCException("Wrong email or password!");
         }
 

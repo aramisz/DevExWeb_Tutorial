@@ -29,16 +29,17 @@
             AuthModel.login(user.email, user.password).then(function (response) {
 
                 console.log('RESPONSE', response);
-                if (angular.isDefined(response.success) && response.success) {
+
+                if (!angular.isDefined(response.error)) {
 
                     UserService.isAuth = true;
-                    UserService.setToken(response.data.token);
-                    UserService.setUserData(response.data.user);
+                    UserService.setToken(response.result.token);
+                    UserService.setUserData(response.result.user);
 
                     window.location = '#/';
                 } else {
                     UserService.isAuth = false;
-                    alert('Login fail!');
+                    alert(response.error.message);
                 }
             });
         }

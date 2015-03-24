@@ -43,7 +43,7 @@ app.service('UserService', function () {
     function setToken(user_token) {
         token = user_token
         console.log('token', token);
-        window.localStorage.setItem('token')
+        window.localStorage.setItem('token', token);
     }
 
     function getToken() {
