@@ -14,6 +14,7 @@ use ART\Hash\Password;
 use ART\Ws\Adapter\JsonRPC\JsonRPCException;
 use ART\Ws\Adapter\JsonRPC\JsonRPCError;
 use VNDR\Logic\User\Auth\UserAuth;
+use VNDR\Logic\User\Auth\UserToken;
 use VNDR\Logic\User\UserManager;
 use VNDR\Model\UserVisitorModelModel;
 use VNDR\Service\Service;
@@ -39,8 +40,22 @@ class UserAuthService extends ServiceWithoutToken
         return $user_manager->login($email, $password);
     }
 
+    /**
+     * Logout
+     */
     public function logout()
     {
 
+    }
+
+    /**
+     * Get user by token
+     *
+     * @param $token
+     * @return \VNDR\Model\UserModel
+     */
+    public function getUserByToken($token) {
+        $user_manager = new UserManager();
+        return $user_manager->getUserByToken($token);
     }
 } 

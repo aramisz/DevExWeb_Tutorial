@@ -64,8 +64,6 @@ class UserToken
             $only_active = true;
             $user = $user_manager->getUserById($user_id, $only_active);
 
-            //Debug::file($user->toArray());
-
             return $user;
         } else {
             throw new JsonRPCException("Token failed, maybe hacking");

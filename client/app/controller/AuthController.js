@@ -6,9 +6,9 @@
 
     app.controller('AuthController', AuthController);
 
-    AuthController.$inject = ['AuthModel', '$state', 'UserService'];
+    AuthController.$inject = ['$rootScope', 'AuthModel', '$state', 'UserService'];
 
-    function AuthController(AuthModel, $state, UserService) {
+    function AuthController($rootScope, AuthModel, $state, UserService) {
         var vm = this;
 
         vm.login = login;
@@ -33,8 +33,13 @@
                 if (!angular.isDefined(response.error)) {
 
                     UserService.isAuth = true;
-                    UserService.setToken(response.result.token);
-                    UserService.setUserData(response.result.user);
+                    UserService.setToken(response.token);
+                    UserService.setUserData(response.user);
+
+                    $rootScope.$broadcast('userAuth', {
+                        isAuth: true,
+                        userData: response.user
+                    });
 
                     window.location = '#/';
                 } else {
@@ -45,6 +50,13 @@
         }
 
         function logout() {
+            $rootScope.$broadcast('userAuth', {
+                isAuth: false,
+                userData: {}
+            });
+
+            console.log('LOGOUT');
+
             UserService.logout();
             //window.location = '/';
         }

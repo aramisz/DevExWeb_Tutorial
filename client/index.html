@@ -5,13 +5,11 @@
     <title></title>
 
     <link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='css/app.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<h1>DevExAngularPhalcon</h1>
-<em>{{mainCtrl.userData.username}}</em>
-
-<div ng-include="'view/common/menu.html'"></div>
+<div ng-include="'view/common/header.html'"></div>
 
 <div ui-view></div>
 
@@ -47,6 +45,7 @@
 
 <!-- Models -->
 <script src="app/model/AuthModel.js"></script>
+<script src="app/model/UserModel.js"></script>
 
 </body>
 </html>

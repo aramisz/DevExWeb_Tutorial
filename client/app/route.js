@@ -10,6 +10,10 @@ appRoute.config(function ($stateProvider, $urlRouterProvider, $locationProvider)
     $stateProvider
         .state('index', {
             url: '/',
+            templateUrl: 'view/about/about-index.html'
+        })
+        .state('about', {
+            url: '/about',
             templateUrl: 'view/index/index.html'
         })
         .state('user', {

@@ -89,34 +89,9 @@ jsonRPC.service('jsonRPCService', function ($http, $jsonRPC) {
             'headers': this.defaults.headers
         };
 
-        //var promise = $http(request).then(function (result) {
-        //
-        //    var return_data = [];
-        //
-        //    if (result.status === 200) {
-        //
-        //        if (secret) {
-        //            var data = JSON.parse(Base64.decode(result.data));
-        //        } else {
-        //            var data = result.data;
-        //        }
-        //
-        //        if (data.result !== undefined) {
-        //            return_data = data.result;
-        //        }
-        //
-        //        if (data.error !== undefined) {
-        //            return_data = data;
-        //        }
-        //    }
-        //
-        //    return return_data;
-        //
-        //});
-
         var promise = $http(request).then(function (result) {
 
-            var data = [];
+            var return_data = [];
 
             if (result.status === 200) {
 
@@ -126,12 +101,16 @@ jsonRPC.service('jsonRPCService', function ($http, $jsonRPC) {
                     var data = result.data;
                 }
 
+                if (data.result !== undefined) {
+                    return_data = data.result;
+                }
+
+                if (data.error !== undefined) {
+                    return_data = data;
+                }
             }
 
-            data.method = method;
-            data.namespace = namespace;
-
-            return data;
+            return return_data;
 
         });
 

@@ -55,7 +55,8 @@ class UserManager {
      */
     public function getUserByToken($token)
     {
-        return UserToken::getUserByToken($token);
+        $user_auth = new UserAuth();
+        return $user_auth->getUserByToken($token);
     }
 
 

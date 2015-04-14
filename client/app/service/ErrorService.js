@@ -22,17 +22,15 @@ app.factory('ErrorInterceptorService', function ($q, $location, $window) {
             if (response.status !== 200) {
 
                 /**
-                 * APIKEY error
-                 * It should be logout the user
+                 * Login user
                  */
                 if (response.status == 402) {
 
-                    $window.location.href = 'error.html';
+                    alert(response.data.error.message + ' (ErrorService)');
                 }
 
                 /**
                  * Token error
-                 * It should be logout the user
                  */
                 if (response.status == 403) {
                     alert(response.data.error.message + ' (ErrorService)');

@@ -54,29 +54,13 @@ class UserAuth extends ServiceWithoutToken
             $user_data = $user->toArray();
             unset($user_data["password"]);
 
-            $this->response->setOutcome(true);
-            $this->response->setData(
-                array(
-                    "success" => true,
-                    "user" => $user_data,
-                    "token" => $token
-                )
-            );
-
-            //return $this->response->toArray();
-
             return array(
                 "success" => true,
                 "user" => $user_data,
                 "token" => $token
             );
         } else {
-//            return array(
-//                "success" => false,
-//                "message" => "Login failed from server!"
-//            );
-
-            header('HTTP/1.0 403 Forbidden');
+            header('HTTP/1.0 402 Forbidden');
             throw new JsonRPCException("Wrong email or password!");
         }
 
@@ -84,6 +68,30 @@ class UserAuth extends ServiceWithoutToken
 
     public function logout()
     {
+
+    }
+
+    /**
+     * Get user by token
+     *
+     * @param $token
+     * @return UserModel
+     * @throws \ART\Ws\Adapter\JsonRPC\JsonRPCException
+     */
+    public function getUserByToken($token)
+    {
+        try {
+            $user_data = UserToken::getUserByToken($token);
+
+            return array(
+                "success" => true,
+                "user" => $user_data,
+                "token" => $token
+            );
+        } catch (JsonRPCException $e) {
+            header('HTTP/1.0 403 Forbidden');
+            throw new JsonRPCException("Invalid token!");
+        }
 
     }
 } 

@@ -27,8 +27,6 @@ class UserService extends ServiceWithToken
         $user_manager = new UserManager();
         $data = $user_manager->getProfileByUserId($this->getUser()->getId());
 
-        Debug::file($data, "UserProfile");
-
         if ($data)
         {
             return $data;

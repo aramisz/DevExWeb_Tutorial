@@ -7,10 +7,7 @@ app.service('UserService', function () {
 
     var isAuth = false;
     var token;
-    var data = {
-        username: 'DevEx User',
-        email: 'devex@helloandroid.com'
-    };
+    var data = {};
 
     function init() {
 
@@ -53,9 +50,9 @@ app.service('UserService', function () {
 
     function logout() {
         isAuth = false;
-        setUser(null);
+        setUserData(null);
         setToken(null);
-        StorageService.clearAll();
+        window.localStorage.clear();
     }
 
 
